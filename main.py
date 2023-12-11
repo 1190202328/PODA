@@ -323,7 +323,7 @@ def main():
         print("Model restored from %s" % opts.ckpt)
         del checkpoint  # free memory
     else:
-        print("[!] Retrain")
+        print("warning!!!! not checkpoint!!!!!!! [!] Retrain")
         model.to(device)
     
     # ==========   Train Loop   ==========#

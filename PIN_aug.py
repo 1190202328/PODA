@@ -110,6 +110,8 @@ def get_argparser():
                         help="GPU ID")
     parser.add_argument("--data_root", type=str, default='./datasets/data',
                         help="path to dataset")
+    parser.add_argument("--ACDC_sub", type=str, default="night",
+                        help="specify which subset of ACDC  to use")
     parser.add_argument("--save_dir", type=str, 
                         help= "path for learnt parameters saving")
     parser.add_argument("--dataset", type=str, default='cityscapes',
@@ -183,7 +185,7 @@ def main():
     np.random.seed(opts.random_seed)
     random.seed(opts.random_seed)
 
-    train_dst,val_dst = get_dataset(opts.dataset,opts.data_root,opts.crop_size,data_aug=False)
+    train_dst,val_dst = get_dataset(opts.dataset,opts.data_root,opts.crop_size,data_aug=False,ACDC_sub=opts.ACDC_sub)
 
     train_loader = data.DataLoader(
         train_dst, batch_size=opts.batch_size, shuffle=True, num_workers=0,
